@@ -1,11 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
 
 export default function ProfilePage() {
-  return (
-    <div>
-      <Link href={'/'}>Home</Link>
-      Profile Page
-    </div>
-  )
+  return <div>Profile Page</div>;
 }

@@ -25,3 +25,23 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem
+}
+
+.nav-hd {
+
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-links > * + * {
+  margin-left: 10px;
+}
