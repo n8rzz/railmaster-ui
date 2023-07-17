@@ -1,0 +1,13 @@
+# Ignore artifacts:
+
+*.d.td
+
+build
+coverage
+.husky
+.next
+node_modules
+
+.prettierrc.json
+.lintstagedrc
+.nvmrc
