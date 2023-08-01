@@ -9,8 +9,24 @@ export const useCurrentUser = () => {
   useEffect(() => {
     const user = Cookies.get(COOKIES.User);
 
-    if (user) {
-      setUser(JSON.parse(user));
+    if (!user) {
+      return;
     }
+
+    setUser(JSON.parse(user));
   }, []);
+
+  /**
+   * Used to determine if a user is `logged` in or not.
+   *
+   * Depends on stored @{link COOKIES.User} values
+   *
+   * @function isLoggedIn
+   * @returns boolean
+   */
+  function isLoggedIn(): boolean {
+    return Boolean(user?.access_token);
+  }
+
+  return { isLoggedIn, user };
 };

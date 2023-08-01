@@ -3,6 +3,8 @@
 import React from 'react';
 import { useLogin } from '@/hooks/auth/login';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { Route } from '@/route.constants';
 
 interface IFormProps {
   email: string;
@@ -11,12 +13,20 @@ interface IFormProps {
 
 export default function LoginPage() {
   const { handleSubmit, register } = useForm<IFormProps>();
+  const router = useRouter();
   const { login } = useLogin();
 
   const onSubmit = handleSubmit(async (form: IFormProps) => {
     const { password, email } = form;
 
-    await login(email, password);
+    let nextRoute = Route.Profile;
+    const user = await login(email, password);
+
+    if (!user) {
+      nextRoute = Route.Login;
+    }
+
+    return router.push(nextRoute);
   });
 
   return (

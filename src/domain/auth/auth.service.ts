@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { IAuthResponse } from '@/domain/auth/auth.types';
+import { IAuthResponse, IAuthResponseData } from '@/domain/auth/auth.types';
 
 export class AuthService {
   protected readonly instance: AxiosInstance;
@@ -12,15 +12,18 @@ export class AuthService {
     });
   }
 
-  public async login(email: string, password: string) {
-    const response: IAuthResponse = await this.instance.post('/v1/auth/login', {
-      email,
-      password,
-    });
+  public async login(email: string, password: string): Promise<IAuthResponse> {
+    const response: IAuthResponseData = await this.instance.post(
+      '/v1/auth/login',
+      {
+        email,
+        password,
+      },
+    );
 
     return {
-      access_token: response.access_token,
-      permissions: response.permissions,
+      access_token: response.data.access_token,
+      permissions: response.data.permissions,
     };
   }
 }
