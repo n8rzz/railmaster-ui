@@ -1,29 +1,38 @@
 'use client';
 
 import React from 'react';
+import { useLogin } from '@/hooks/auth/login';
+import { useForm } from 'react-hook-form';
+
+interface IFormProps {
+  email: string;
+  password: string;
+}
 
 export default function LoginPage() {
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const { handleSubmit, register } = useForm<IFormProps>();
+  const { login } = useLogin();
 
-    console.log('onSubmit', event.nativeEvent);
-  };
+  const onSubmit = handleSubmit(async (form: IFormProps) => {
+    const { password, email } = form;
+
+    await login(email, password);
+  });
 
   return (
     <div>
       Login Page
       <form
         autoComplete={'off'}
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
       >
         <div>
           <label htmlFor="username">
-            <div>Username</div>
+            <div>Email</div>
             <input
+              {...register('email')}
               type={'text'}
-              name={'username'}
-              id={'username'}
-              placeholder={'Username'}
+              placeholder={'email'}
             />
           </label>
         </div>
@@ -31,9 +40,8 @@ export default function LoginPage() {
           <label htmlFor="password">
             <div>Password</div>
             <input
+              {...register('password')}
               type={'password'}
-              name={'password'}
-              id={'password'}
               placeholder={'Password'}
             />
           </label>

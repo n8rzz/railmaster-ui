@@ -4,9 +4,10 @@ import Cookies from 'js-cookie';
 import { COOKIES } from '@/domain/auth/auth.constants';
 
 export const useLogin = () => {
-  const login = async (username: string, password: string) => {
-    const authService = new AuthService('/');
-    const user = await authService.login(username, password);
+  const login = async (email: string, password: string) => {
+    const url = process.env.BASE_API_URL || 'http://localhost:3001';
+    const authService = new AuthService(url);
+    const user = await authService.login(email, password);
 
     if (user) {
       Cookies.set(COOKIES.User, JSON.stringify(user));
