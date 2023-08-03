@@ -8,4 +8,7 @@ export interface IAuthResponseData {
   data: IAuthResponse;
 }
 
-export interface IUser extends IAuthResponse {}
+export interface IUser {
+  email: string;
+  sub: number;
+}
