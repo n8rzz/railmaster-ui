@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { Route } from '@/route.constants';
 import { useLogout } from '@/hooks/auth/logout';
 import { useRouter } from 'next/navigation';
-import { useCurrentUser } from '@/hooks/auth/current-user';
+import { useCurrentToken } from '@/hooks/auth/current-token';
 import { UiIf } from '@/components/UiIf/ui-if';
 
 interface IProps {}
 
 export function Navigation(props: IProps) {
   const router = useRouter();
-  const { isLoggedIn } = useCurrentUser();
+  const { isLoggedIn } = useCurrentToken();
   const { logout } = useLogout();
 
   const onClickLogout = async () => {

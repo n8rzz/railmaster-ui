@@ -1,17 +1,42 @@
 'use client';
 
-import React from 'react';
-import { useCurrentUser } from '@/hooks/auth/current-user';
+import React, { useEffect } from 'react';
+import { useUserStore } from '@/hooks/users/userStore';
 
 export default function ProfilePage() {
-  const { user } = useCurrentUser();
+  const { access_token, permissions, user, getUser } = useUserStore();
+
+  useEffect(() => {
+    void getUser();
+  }, [getUser]);
+
+  console.log(user);
 
   return (
     <div>
-      [PROTECTED] Profile Page
+      <h2>[PROTECTED] Profile Page</h2>
+      <div>
+        <b>Token:</b>
+        {access_token}
+      </div>
+
       <br />
+
+      <div>
+        <b>Permissions:</b>
+        {JSON.stringify(permissions)}
+      </div>
+
       <br />
-      {user?.access_token}
+
+      <div>
+        <b>Id: </b>
+        {user?.id || 'ID'}
+      </div>
+      <div>
+        <b>Profile:</b>
+        {user?.email || 'EMAIL'}
+      </div>
     </div>
   );
 }

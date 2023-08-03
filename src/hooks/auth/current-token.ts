@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
-import { IUser } from '@/domain/auth/auth.types';
+import { IAuthResponse } from '@/domain/auth/auth.types';
 import Cookies from 'js-cookie';
 import { COOKIES } from '@/domain/auth/auth.constants';
 
-export const useCurrentUser = () => {
-  const [user, setUser] = useState<IUser | null>(null);
+export const useCurrentToken = () => {
+  const [token, setToken] = useState<IAuthResponse | null>(null);
 
   useEffect(() => {
-    const user = Cookies.get(COOKIES.User);
+    const token = Cookies.get(COOKIES.User);
 
-    if (!user) {
+    if (!token) {
       return;
     }
 
-    setUser(JSON.parse(user));
+    setToken(JSON.parse(token));
   }, []);
 
   /**
@@ -25,8 +25,8 @@ export const useCurrentUser = () => {
    * @returns boolean
    */
   function isLoggedIn(): boolean {
-    return Boolean(user?.access_token);
+    return Boolean(token?.access_token);
   }
 
-  return { isLoggedIn, user };
+  return { isLoggedIn, user: token };
 };
