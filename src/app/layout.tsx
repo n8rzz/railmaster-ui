@@ -3,6 +3,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { TopNavigation } from '@/components/Navigation/TopNavigation';
+import { SideNavigation } from '@/components/Navigation/SideNavigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,15 +21,8 @@ export default function RootLayout(props: IProps) {
     <html lang="en">
       <body className={inter.className}>
         <TopNavigation />
-        <div className={'flex align-center'}>
-          <div className={'pr-2'}>
-            LEFT NAV
-            <ul>
-              <li>Engines</li>
-              <li>Railcars</li>
-              <li>Trains</li>
-            </ul>
-          </div>
+        <div className={'flex align-top gap-2 '}>
+          <SideNavigation />
           <div>{props.children}</div>
         </div>
       </body>
