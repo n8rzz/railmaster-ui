@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { useUserStore } from '@/domain/users/user.store';
 import { useEngineStore } from '@/domain/engines/engine.store';
+import { ListPageHeader } from '@/components/ListPageHeader/ListPageHeader';
 
 export default function Engines() {
   const { access_token, permissions, user, getUser } = useUserStore();
@@ -15,7 +16,10 @@ export default function Engines() {
 
   return (
     <main>
-      ENGINES - {engines.length}
+      <ListPageHeader
+        caption={engines.length.toString()}
+        title={'Engines'}
+      />
       <div>{JSON.stringify(engines)}</div>
     </main>
   );

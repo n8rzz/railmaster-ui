@@ -7,7 +7,9 @@ interface UserStoreState {
   permissions: string[];
   user: IUser | undefined;
 
+  getToken: () => Promise<void>;
   getUser: () => Promise<void>;
+  isValidUser: () => Promise<boolean>;
 }
 
 export const useUserStore = create<UserStoreState>((set) => ({
@@ -34,5 +36,8 @@ export const useUserStore = create<UserStoreState>((set) => ({
     } catch (error) {
       console.error('Error fetching user:', error);
     }
+  },
+  isValidUser: async () => {
+    return true;
   },
 }));

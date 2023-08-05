@@ -4,7 +4,7 @@ import { Route } from '@/route.constants';
 
 export function SideNavigation() {
   return (
-    <div className={'flex align-center'}>
+    <div className={'flex align-center px-2'}>
       <div>
         LEFT NAV
         <ul>

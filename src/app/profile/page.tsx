@@ -4,11 +4,12 @@ import React, { useEffect } from 'react';
 import { useUserStore } from '@/domain/users/user.store';
 
 export default function ProfilePage() {
-  const { access_token, permissions, user, getUser } = useUserStore();
+  const { access_token, permissions, user, getToken, getUser } = useUserStore();
 
   useEffect(() => {
+    void getToken();
     void getUser();
-  }, [getUser]);
+  }, [getToken, getUser]);
 
   return (
     <div>
