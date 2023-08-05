@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useUserStore } from '@/hooks/users/userStore';
+import { useUserStore } from '@/domain/users/user.store';
 
 export default function ProfilePage() {
   const { access_token, permissions, user, getUser } = useUserStore();
