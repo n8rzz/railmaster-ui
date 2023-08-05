@@ -10,8 +10,6 @@ export default function ProfilePage() {
     void getUser();
   }, [getUser]);
 
-  console.log(user);
-
   return (
     <div>
       <h2>[PROTECTED] Profile Page</h2>

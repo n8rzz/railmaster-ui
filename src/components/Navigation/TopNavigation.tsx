@@ -10,14 +10,14 @@ import { UiIf } from '@/components/UiIf/ui-if';
 
 interface IProps {}
 
-export function Navigation(props: IProps) {
+export function TopNavigation(props: IProps) {
   const router = useRouter();
   const { isLoggedIn } = useCurrentToken();
   const { logout } = useLogout();
 
   const onClickLogout = async () => {
     await logout();
-    await router.push(Route.Home);
+    router.push(Route.Home);
   };
 
   return (
