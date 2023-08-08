@@ -21,7 +21,7 @@ export function TopNavigation(props: IProps) {
   };
 
   return (
-    <nav className={'nav'}>
+    <nav className={'nav mb-6'}>
       <h1 className={'nav-hd'}>
         <Link href={Route.Home}>Railmaster</Link>
       </h1>
