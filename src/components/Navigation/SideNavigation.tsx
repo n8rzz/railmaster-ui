@@ -4,9 +4,8 @@ import { Route } from '@/route.constants';
 
 export function SideNavigation() {
   return (
-    <div className={'flex align-center px-2'}>
+    <div className={'flex align-center px-6'}>
       <div>
-        LEFT NAV
         <ul>
           <li>
             <Link href={Route.Railcars}>Railcars</Link>
